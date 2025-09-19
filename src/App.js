@@ -8,14 +8,15 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Exact API endpoint as per assignment
     fetch('https://jsonplaceholder.typicode.com/users')
-      .then(res => res.json())
+      .then(response => response.json())  // convert response to JSON
       .then(data => {
-        setUsers(data);
+        setUsers(data); // do not modify, send raw JSON to the UI
         setLoading(false);
       })
-      .catch(err => {
-        console.error(err);
+      .catch(error => {
+        console.error('Error fetching user data:', error);
         setLoading(false);
       });
   }, []);
